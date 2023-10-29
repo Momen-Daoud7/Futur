@@ -1,6 +1,7 @@
 'use client'
 
-import {Layout,Compass} from "lucide-react"
+import {Layout,Compass, List, BarChart} from "lucide-react"
+import {usePathname} from "next/navigation"
 import SidebarItem from "./SidebarItem";
 
 const guestRoutes = [
@@ -16,10 +17,29 @@ const guestRoutes = [
   },
 ];
 
+const teacherRoutes = [
+  {
+    icon: List,
+    label: "Courses",
+    href: "/teacher/courses",
+  },
+  {
+    icon: BarChart,
+    label: "Analytics",
+    href: "/teacher/analytics",
+  },
+];
+
 const SidebarRoutes = () => {
+    const pathname = usePathname();
+
+    const isTeacher = pathname?.includes("teacher");
+
+    // Render routes conditionaly
+    const routes = isTeacher ? teacherRoutes : guestRoutes
   return (
     <div className="flex flex-col w-full">
-        {guestRoutes.map((route,key) => (
+        {routes.map((route,key) => (
             <SidebarItem
                 key={key}
                 icon={route.icon}
