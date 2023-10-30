@@ -1,4 +1,5 @@
-"use client";
+'use client'
+
 import * as zod from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -38,8 +39,9 @@ const page = () => {
 
   const onSubmit = async (values: zod.infer<typeof formSchema>) => {
     try {
-      const response = await axios.post(`/api/course`, values);
+      const response = await axios.post(`/api/courses`, values);
       router.push(`/teacher/courses/${response.data.id}`);
+      toast.success("Course Created.")
     } catch (error) {
       toast.error("Something went wrong");
     }
