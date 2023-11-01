@@ -8,11 +8,12 @@ import {
 } from "lucide-react";
 
 import { db } from "@/lib/db";
-import  {IconBadge}  from "@/components/IconBadge";
+import { IconBadge } from "@/components/IconBadge";
 // import { Banner } from "@/components/banner";
 
-import  TitleForm  from "./_components/TitleForm";
-import DescriptionForm  from "./_components/DescriptionForm";
+import TitleForm from "./_components/TitleForm";
+import DescriptionForm from "./_components/DescriptionForm";
+import { ImageForm } from "./_components/ImageForm";
 // import { ImageForm } from "./_components/image-form";
 // import { CategoryForm } from "./_components/category-form";
 // import { PriceForm } from "./_components/price-form";
@@ -31,7 +32,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     where: {
       id: params.courseId,
       userId,
-    }
+    },
   });
 
   const categories = await db.category.findMany({
@@ -85,9 +86,10 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
               <IconBadge icon={LayoutDashboard} />
               <h2 className="text-xl">Customize your course</h2>
             </div>
-             <TitleForm initialData={course} courseId={course.id} />
+            <TitleForm initialData={course} courseId={course.id} />
             <DescriptionForm initialData={course} courseId={course.id} />
-            {/* <ImageForm initialData={course} courseId={course.id} /> */}
+
+            <ImageForm initialData={course} courseId={course.id} />
             {/* <CategoryForm
               initialData={course}
               courseId={course.id}

@@ -13,15 +13,17 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { cn } from "@/lib/utils";
+import { Textarea } from "@/components/ui/textarea";
 
 interface DescriptionFormProps {
   initialData: {
     description: string;
+
   };
   courseId: string;
 }
@@ -75,7 +77,16 @@ const DescriptionForm = ({ initialData, courseId }: DescriptionFormProps) => {
           )}
         </Button>
       </div>
-      {!isEditing && <p className="text-sm mt-2">{initialData.description}</p>}
+      {!isEditing && (
+        <p
+          className={cn(
+            "text-sm mt-2",
+            !initialData.description && "text-slate-500 italic"
+          )}
+        >
+          {initialData.description || "No description"}
+        </p>
+      )}
       {isEditing && (
         <Form {...form}>
           <form
@@ -88,11 +99,12 @@ const DescriptionForm = ({ initialData, courseId }: DescriptionFormProps) => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
+                    <Textarea
                       disabled={isSubmitting}
-                      placeholder="e.g. 'Advanced web development'"
+                      placeholder="e.g. 'This course is about...'"
                       {...field}
                     />
+                    
                   </FormControl>
                   <FormMessage />
                 </FormItem>
