@@ -14,9 +14,9 @@ import { IconBadge } from "@/components/IconBadge";
 import TitleForm from "./_components/TitleForm";
 import DescriptionForm from "./_components/DescriptionForm";
 import { ImageForm } from "./_components/ImageForm";
-import { CategoryForm } from "./_components/categoryForm";
-// import { PriceForm } from "./_components/price-form";
-// import { AttachmentForm } from "./_components/attachment-form";
+import { CategoryForm } from "./_components/CategoryForm";
+import { PriceForm } from "./_components/PriceForm";
+import { AttachmentForm } from "./_components/AttachmentForm";
 // import { ChaptersForm } from "./_components/chapters-form";
 // import { Actions } from "./_components/actions";
 
@@ -32,7 +32,20 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
       id: params.courseId,
       userId,
     },
+    include: {
+      // chapters: {
+      //   orderBy: {
+      //     position: "asc",
+      //   },
+      // },
+      attachments: {
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
+    },
   });
+
 
   const categories = await db.category.findMany({
     orderBy: {
@@ -111,14 +124,14 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
                 <IconBadge icon={CircleDollarSign} />
                 <h2 className="text-xl">Sell your course</h2>
               </div>
-              {/* <PriceForm initialData={course} courseId={course.id} /> */}
+              <PriceForm initialData={course} courseId={course.id} />
             </div>
             <div>
               <div className="flex items-center gap-x-2">
                 <IconBadge icon={File} />
                 <h2 className="text-xl">Resources & Attachments</h2>
               </div>
-              {/* <AttachmentForm initialData={course} courseId={course.id} /> */}
+              <AttachmentForm initialData={course} courseId={course.id} />
             </div>
           </div>
         </div>
