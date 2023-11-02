@@ -9,7 +9,7 @@ import {
 
 import { db } from "@/lib/db";
 import { IconBadge } from "@/components/IconBadge";
-// import { Banner } from "@/components/banner";
+import { Banner } from "@/components/Banner";
 
 import TitleForm from "./_components/TitleForm";
 import DescriptionForm from "./_components/DescriptionForm";
@@ -18,7 +18,7 @@ import { CategoryForm } from "./_components/CategoryForm";
 import { PriceForm } from "./_components/PriceForm";
 import { AttachmentForm } from "./_components/AttachmentForm";
 import { ChaptersForm } from "./_components/ChapterForm";
-// import { Actions } from "./_components/actions";
+import { Actions } from "./_components/Actions";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
@@ -76,9 +76,9 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
 
   return (
     <>
-      {/* {!course.isPublished && (
+      {!course.isPublished && (
         <Banner label="This course is unpublished. It will not be visible to the students." />
-      )} */}
+      )}
       <div className="p-6">
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-y-2">
@@ -87,11 +87,11 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
               Complete all fields {completionText}
             </span>
           </div>
-          {/* <Actions
+          <Actions
             disabled={!isComplete}
             courseId={params.courseId}
             isPublished={course.isPublished}
-          /> */}
+          />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
           <div>
