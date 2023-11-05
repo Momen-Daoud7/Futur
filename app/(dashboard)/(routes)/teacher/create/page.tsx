@@ -25,7 +25,7 @@ const formSchema = zod.object({
   title: zod.string().min(1, { message: "Title is required" }),
 });
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   // Init form
   const form = useForm<zod.infer<typeof formSchema>>({
@@ -96,4 +96,4 @@ const page = () => {
     </div>
   );
 };
-export default page;
+export default Page;

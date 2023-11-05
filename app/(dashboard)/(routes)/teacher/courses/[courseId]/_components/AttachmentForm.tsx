@@ -39,7 +39,7 @@ export const AttachmentForm = ({
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData,
+    defaultValues: {url: ""},
   });
   const { isSubmitting, isValid } = form.formState;
 
@@ -136,7 +136,6 @@ export const AttachmentForm = ({
                       value={field.value ? [field.value] : []}
                       onChange={(url) => field.onChange(url)}
                       onRemove={() => field.onChange("")}
-                      display={false}
                     />
                   </FormControl>
                   <FormMessage />
