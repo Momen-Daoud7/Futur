@@ -72,7 +72,7 @@ export const AttachmentForm = ({
   };
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border  rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Course attachments
         <Button onClick={toggleEdit} variant="ghost">
@@ -136,6 +136,7 @@ export const AttachmentForm = ({
                       value={field.value ? [field.value] : []}
                       onChange={(url) => field.onChange(url)}
                       onRemove={() => field.onChange("")}
+                      display={false}
                     />
                   </FormControl>
                   <FormMessage />

@@ -63,7 +63,7 @@ const DescriptionForm = ({ initialData, courseId }: DescriptionFormProps) => {
   // Toggle function for editing
   const toggleEdit = () => setIsEditing((current) => !current);
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border  rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Course description
         <Button onClick={toggleEdit} variant="ghost">

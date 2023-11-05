@@ -132,6 +132,7 @@ const ChapterIdPage = async ({
               initialData={chapter}
               chapterId={params.chapterId}
               courseId={params.courseId}
+              
             />
           </div>
         </div>

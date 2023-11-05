@@ -19,8 +19,8 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Editor } from "@/components/editor";
-import { Preview } from "@/components/preview";
+import { Editor } from "@/components/Editor";
+import { Preview } from "@/components/Preview";
 
 interface ChapterDescriptionFormProps {
   initialData: Chapter;
@@ -64,7 +64,7 @@ export const ChapterDescriptionForm = ({
   }
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border  rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Chapter description
         <Button onClick={toggleEdit} variant="ghost">

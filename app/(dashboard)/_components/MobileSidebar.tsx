@@ -8,7 +8,7 @@ const MobileSidebar = () => {
       <SheetTrigger className="md:hidden pr-4 hover:opacity-75 transition">
         <Menu className="cursor-pointer" />
       </SheetTrigger>
-      <SheetContent side="left" className="p-0 bg-white">
+      <SheetContent side="left" className="p-0 ">
         <Sidebar />
       </SheetContent>
     </Sheet>

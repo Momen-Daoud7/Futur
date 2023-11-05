@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Chapter, MuxData } from "@prisma/client";
 import Image from "next/image";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import {useForm} from "react-hook-form"
 
@@ -61,7 +62,7 @@ export const ChapterVideoForm = ({
   }
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border  rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Chapter video
         <Button onClick={toggleEdit} variant="ghost">
@@ -87,7 +88,7 @@ export const ChapterVideoForm = ({
           </div>
         ) : (
           <div className="relative aspect-video mt-2">
-            <MuxPlayer playbackId={initialData?.muxData?.playbackId || ""} />
+            <MuxPlayer src={initialData.videoUrl || ""} />
           </div>
         ))}
       {isEditing && (
@@ -106,6 +107,7 @@ export const ChapterVideoForm = ({
                       value={field.value ? [field.value] : []}
                       onChange={(url) => field.onChange(url)}
                       onRemove={() => field.onChange("")}
+                      // display={false}
                     />
                   </FormControl>
                   <FormMessage />
